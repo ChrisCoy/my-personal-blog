@@ -1,0 +1,154 @@
+.postsItem {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  justify-self: center;
+  background-color: #1f1f1e;
+
+  color: var(--text);
+  width: 300px;
+  height: 210px;
+  border-radius: 20px;
+
+  transition: 0.2s ease-in-out;
+
+  .title {
+    margin: 0.1rem 0.4rem;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+  }
+
+  .content {
+    width: 100%;
+
+    transition: 0.2s ease-in-out;
+
+    .background {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+
+      // background-color: #b6afaf;
+      background-color: #e84855;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 160px;
+        overflow-x: hidden;
+        transition: 0.2s ease-in-out;
+      }
+
+      .author {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-weight: 400;
+        margin-left: 0.6rem;
+        margin-bottom: 0.2rem;
+        z-index: 1;
+      }
+
+      .time {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+        margin-right: 0.6rem;
+        z-index: 1;
+      }
+
+      .strip {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        height: 1.5rem;
+        background-color: #e84855;
+        filter: opacity(0.8);
+      }
+    }
+  }
+
+  .resume {
+    display: none;
+  }
+
+  &:hover {
+    animation: backgroundAnimation 1 0.2s ease-in-out;
+
+    .title {
+      display: none;
+    }
+
+    .content {
+      position: relative;
+      height: 100%;
+      background-color: #141414;
+
+      .resume {
+        display: block;
+        margin-top: -2.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        animation: textHoverEffect 1 0.2s ease-out;
+      }
+    }
+
+    .background {
+      background: none;
+      img {
+        margin-top: 0.5rem;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .strip {
+        display: none;
+      }
+      .time {
+        display: none;
+      }
+      .author {
+        display: none;
+      }
+    }
+  }
+  @keyframes backgroundAnimation {
+    0% {
+      width: 300px;
+      height: 210px;
+    }
+
+    50% {
+      width: 280px;
+      height: 190px;
+      margin: 10px 10px;
+    }
+
+    100% {
+      width: 300px;
+      height: 210px;
+    }
+  }
+
+  @keyframes textHoverEffect {
+    0% {
+      max-width: 0px;
+    }
+    100% {
+      max-width: 180px;
+    }
+  }
+}
