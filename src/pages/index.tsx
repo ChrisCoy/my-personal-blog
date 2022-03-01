@@ -12,6 +12,7 @@ import { predicate as prismicPredicate } from "@prismicio/client";
 import { useState } from "react";
 import { RichText } from "prismic-dom";
 import ItemPost from "../components/ItemPost";
+import TopPostItem from "../components/TopPostItem";
 
 interface Post {
   uid?: string;
@@ -34,20 +35,17 @@ interface HomeProps {
 }
 
 export default function Home({ postsPagination }: HomeProps) {
-  //console.log(postsPagination);
   const [posts, setPosts] = useState<Post[]>(postsPagination.results);
   const [nextPage, setNextPage] = useState(postsPagination.next_page);
-
-  console.log(posts);
 
   return (
     <main className={styles.container}>
       <section className={styles.content}>
-        <title className={styles.headerTitle}>Posts</title>
+        <title className={styles.headerTitle}>Post</title>
         <div className={styles.lineBottom}></div>
         <div className={styles.posts}>
           {posts.map((post) => (
-            <ItemPost post={post} />
+            <ItemPost post={post} key={post.uid} />
           ))}
         </div>
       </section>
@@ -56,10 +54,14 @@ export default function Home({ postsPagination }: HomeProps) {
         <div className={styles.topPostsContent}>
           <title>Top Posts</title>
         </div>
-            <ItemPost post={posts[0]}/>
-            <ItemPost post={posts[0]}/>
-            <ItemPost post={posts[0]}/>
-            
+        <TopPostItem />
+        <TopPostItem />
+        <TopPostItem />
+        <TopPostItem />
+        <TopPostItem />
+        <TopPostItem />
+        <TopPostItem />
+        <TopPostItem />
       </section>
     </main>
   );
@@ -115,36 +117,22 @@ export default function Home({ postsPagination }: HomeProps) {
   //     </div>
   //   </main>
   // );
-
-  return <></>;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getPrismicClient();
-
-  //console.log(prismic);
-
-  // const postsResponse = await prismic.getAllByType("posts", {
-  //   orderings: {
-  //     field: "document.first_publication_date",
-  //     direction: "desc",
-  //   },
-  //   pageSize: 1,
-  // });
-
   const postsResponse = await client.get({
     predicates: [prismicPredicate.at("document.type", "post")],
     orderings: {
       field: "document.first_publication_date",
       direction: "desc",
     },
-    pageSize: 24,
+    pageSize: 8,
   });
 
   const posts = postsResponse.results.map<Post>((post) => {
     return {
       uid: post.uid,
-      // first_publication_date: post.first_publication_date,
       first_publication_date: "12/06/2022",
       data: {
         title: post.data.title,

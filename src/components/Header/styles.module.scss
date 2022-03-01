@@ -1,6 +1,6 @@
 .Container {
   height: 5rem;
-  border-bottom: 1px solid #40403b;
+  // border-bottom: 1px solid #40403b;
   background-color: #1f1f1e;
 }
 
@@ -21,11 +21,7 @@
     div {
       display: flex;
       justify-content: center;
-      a {
-        display: block;
-        align-self: flex-end;
-        margin-bottom: 0.2rem;
-      }
+
       img {
         width: 2rem;
         filter: hue-rotate(70deg);

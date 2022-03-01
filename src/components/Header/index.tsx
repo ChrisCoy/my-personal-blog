@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import logo from "../../../public/logo.svg";
+import { SiWolframlanguage } from "react-icons/si";
 
 export default function Header() {
   return (
