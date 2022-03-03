@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import { BsPerson } from "react-icons/bs";
 import { RiCalendarLine } from "react-icons/ri";
+import Link from "next/link";
 
 interface Post {
   uid?: string;
@@ -19,33 +20,31 @@ interface itemPostProps {
 
 export default function ItemPost({ post }: itemPostProps) {
   return (
-    <div className={styles.container}>
-      <div className={styles.postsItem}>
-        <div className={styles.content}>
-          <div className={styles.background}>
-            {/* <img src={post.data.img} alt="img" /> */}
+    <Link href={`/post/${post.uid}`}>
+      <a className={styles.container}>
+        <div className={styles.postsItem}>
+          <div className={styles.content}>
+            <div className={styles.background}>
+              <img src={`${post.data.img}`} alt="" />
 
-            <img src={`https://source.unsplash.com/1600x900/?beach`} alt="" />
-
-            <p className={styles.author}>
-              <BsPerson size={20} />
-              {post.data.author}
-            </p>
-            <time className={styles.date}>
-              <RiCalendarLine size={20} />
-              {post.first_publication_date}
-            </time>
-            <div className={styles.strip}></div>
+              <p className={styles.author}>
+                <BsPerson size={20} />
+                {post.data.author}
+              </p>
+              <time className={styles.date}>
+                <RiCalendarLine size={20} />
+                {post.first_publication_date}
+              </time>
+              <div className={styles.strip}></div>
+            </div>
+            <p className={styles.resume}>{post.data.resume}aaaa</p>
           </div>
-          <p className={styles.resume}>{post.data.resume}aaaa</p>
-        </div>
 
-        <div className={styles.title}>
-          <title className={styles.title}>
-            {post.data.title + " e outro titulo pra ficar legal"}
-          </title>
+          <div className={styles.title}>
+            <title className={styles.title}>{post.data.title}</title>
+          </div>
         </div>
-      </div>
-    </div>
+      </a>
+    </Link>
   );
 }

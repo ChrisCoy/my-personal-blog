@@ -54,14 +54,11 @@ export default function Home({ postsPagination }: HomeProps) {
         <div className={styles.topPostsContent}>
           <title>Top Posts</title>
         </div>
-        <TopPostItem />
-        <TopPostItem />
-        <TopPostItem />
-        <TopPostItem />
-        <TopPostItem />
-        <TopPostItem />
-        <TopPostItem />
-        <TopPostItem />
+        <TopPostItem post={posts[0]} />
+        <TopPostItem post={posts[0]} />
+        <TopPostItem post={posts[0]} />
+        <TopPostItem post={posts[0]} />
+        <TopPostItem post={posts[0]} />
       </section>
     </main>
   );

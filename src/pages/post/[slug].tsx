@@ -10,5 +10,5 @@ interface Post {
 }
 
 export default function Post() {
-  return <h1>tetetete</h1>;
+  return <></>;
 }
