@@ -13,6 +13,7 @@ import { useState } from "react";
 import { RichText } from "prismic-dom";
 import ItemPost from "../components/ItemPost";
 import TopPostItem from "../components/TopPostItem";
+import LineTitle from "../components/LineTitle";
 
 interface Post {
   uid?: string;
@@ -40,27 +41,60 @@ export default function Home({ postsPagination }: HomeProps) {
 
   return (
     <main className={styles.container}>
-      <section className={styles.content}>
-        <title className={styles.headerTitle}>Post</title>
-        <div className={styles.lineBottom}></div>
+      <div className={styles.content}>
         <div className={styles.posts}>
-          {posts.map((post) => (
-            <ItemPost post={post} key={post.uid} />
-          ))}
+          <div className={styles.title}>
+            <LineTitle>Posts</LineTitle>
+          </div>
+          <div className={styles.postsCards}>
+            <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+          </div>
         </div>
-      </section>
-      <section className={styles.topPosts}>
-        <div className={styles.lineTop}></div>
-        <div className={styles.topPostsContent}>
-          <title>Top Posts</title>
+
+        <div className={styles.topPosts}>
+          <div className={styles.title}>
+            <LineTitle left color="effects">
+              Top Posts
+            </LineTitle>
+          </div>
+
+          <div className={styles.topPostsCard}>
+            <TopPostItem post={posts[1]} />
+            <TopPostItem post={posts[1]} />
+            <TopPostItem post={posts[1]} />
+          </div>
         </div>
-        <TopPostItem post={posts[0]} />
-        <TopPostItem post={posts[0]} />
-        <TopPostItem post={posts[0]} />
-        <TopPostItem post={posts[0]} />
-        <TopPostItem post={posts[0]} />
-      </section>
+      </div>
     </main>
+
+    // <main className={styles.container}>
+    //   <section className={styles.content}>
+    //     <title className={styles.headerTitle}>Post</title>
+    //     <div className={styles.lineBottom}></div>
+    //     <div className={styles.posts}>
+    //       {posts.map((post) => (
+    //         <ItemPost post={post} key={post.uid} />
+    //       ))}
+    //     </div>
+    //   </section>
+    //   <section className={styles.topPosts}>
+    //     <div className={styles.topPostsContent}>
+    //       <title>Top Posts</title>
+    //     </div>
+    //       <div className={styles.lineBottom}></div>
+    //     <div className={styles.postsContainer}>
+    //       <TopPostItem post={posts[0]} />
+    //       <TopPostItem post={posts[0]} />
+    //       <TopPostItem post={posts[0]} />
+    //       <TopPostItem post={posts[0]} />
+    //       <TopPostItem post={posts[0]} />s
+    //     </div>
+    //   </section>
+    // </main>
   );
 
   // async function showMorePosts() {
