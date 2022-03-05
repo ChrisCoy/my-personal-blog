@@ -1,14 +1,49 @@
 .container {
   max-width: 1280px;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding: 0 2rem;
 
   .content {
     display: flex;
+    flex-wrap: wrap;
 
     .title {
       display: flex;
-      height: 6rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+
+      & div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: var(--text);
+          border: 2px solid;
+          border-radius: 3px;
+          width: 8rem;
+          height: 2.2rem;
+          &:nth-child(1) {
+            color: var(--text);
+            border-color: var(--highlight);
+          }
+          &:nth-child(2) {
+            color: var(--text);
+            border-color: var(--effects);
+          }
+        }
+      }
+
+      .lineSeparator {
+        width: 100%;
+        margin: 0 2px;
+        height: 2px;
+        margin-top: -2px;
+        background: linear-gradient(60deg, var(--highlight) 70%, var(--effects) 75%);
+      }
     }
 
     div {
@@ -28,9 +63,21 @@
 }
 
 .postsCards {
+  // max-width: 96%;
+  // align-self: center;
+  // gap: 2rem;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-around;
+  // &::after {
+  //   content: "";
+
+  // }
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 240px);
   gap: 2rem;
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .topPostsCard {
@@ -40,7 +87,28 @@
 }
 
 @media (max-width: 839px) {
-  .topPosts{
+  .topPosts {
     display: none;
+  }
+
+  .title {
+    & div:nth-child(2) {
+      display: none;
+    }
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+
+    & div {
+      title {
+        &:nth-child(1) {
+          display: none;
+        }
+      }
+    }
   }
 }

@@ -42,27 +42,33 @@ export default function Home({ postsPagination }: HomeProps) {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.posts}>
-          <div className={styles.title}>
-            <LineTitle>Posts</LineTitle>
+        <div className={styles.title}>
+          <div>
+            <title>Posts</title>
+            <title>Top Posts</title>
           </div>
+          <div className={styles.lineSeparator} />
+        </div>
+        <div className={styles.posts}>
           <div className={styles.postsCards}>
             <ItemPost post={posts[0]} />
             <ItemPost post={posts[0]} />
             <ItemPost post={posts[0]} />
             <ItemPost post={posts[0]} />
             <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+            {/* <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} />
+            <ItemPost post={posts[0]} /> */}
           </div>
         </div>
 
         <div className={styles.topPosts}>
-          <div className={styles.title}>
-            <LineTitle left color="effects">
-              Top Posts
-            </LineTitle>
-          </div>
-
           <div className={styles.topPostsCard}>
+            <TopPostItem post={posts[1]} />
+            <TopPostItem post={posts[1]} />
+            <TopPostItem post={posts[1]} />
             <TopPostItem post={posts[1]} />
             <TopPostItem post={posts[1]} />
             <TopPostItem post={posts[1]} />
