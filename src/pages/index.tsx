@@ -66,94 +66,15 @@ export default function Home({ postsPagination }: HomeProps) {
 
         <div className={styles.topPosts}>
           <div className={styles.topPostsCard}>
-            <TopPostItem post={posts[1]} />
-            <TopPostItem post={posts[1]} />
-            <TopPostItem post={posts[1]} />
-            <TopPostItem post={posts[1]} />
-            <TopPostItem post={posts[1]} />
-            <TopPostItem post={posts[1]} />
+            <TopPostItem post={posts[0]} />
+            <TopPostItem post={posts[0]} />
+            <TopPostItem post={posts[0]} />
+            <TopPostItem post={posts[0]} />
           </div>
         </div>
       </div>
     </main>
-
-    // <main className={styles.container}>
-    //   <section className={styles.content}>
-    //     <title className={styles.headerTitle}>Post</title>
-    //     <div className={styles.lineBottom}></div>
-    //     <div className={styles.posts}>
-    //       {posts.map((post) => (
-    //         <ItemPost post={post} key={post.uid} />
-    //       ))}
-    //     </div>
-    //   </section>
-    //   <section className={styles.topPosts}>
-    //     <div className={styles.topPostsContent}>
-    //       <title>Top Posts</title>
-    //     </div>
-    //       <div className={styles.lineBottom}></div>
-    //     <div className={styles.postsContainer}>
-    //       <TopPostItem post={posts[0]} />
-    //       <TopPostItem post={posts[0]} />
-    //       <TopPostItem post={posts[0]} />
-    //       <TopPostItem post={posts[0]} />
-    //       <TopPostItem post={posts[0]} />s
-    //     </div>
-    //   </section>
-    // </main>
   );
-
-  // async function showMorePosts() {
-  //   fetch(nextPage)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const postsTemp = data.results.map((post) => {
-  //         return {
-  //           uid: post.uid,
-  //           first_publication_date: data.first_publication_date,
-  //           data: {
-  //             title: post.data.title,
-  //             subtitle: post.data.subtitle,
-  //             author: post.data.author,
-  //           },
-  //         };
-  //       });
-
-  //       setNextPage(data.next_page);
-  //       setPosts([...posts, ...postsTemp]);
-  //     });
-  // }
-
-  // return (
-  //   <main className={styles.container}>
-  //     <div className={styles.posts}>
-  //       <nav className={styles.header}>
-  //         <img src="/logo.svg" alt="logo" />
-  //       </nav>
-
-  //       {posts.map((post) => {
-  //         return (
-  //           <Link href={`/post/${post.uid}`} key={post.uid}>
-  //             <a>
-  //               <h1>{post.data.title}</h1>
-  //               <p>{post.data.subtitle}</p>
-  //               <div>
-  //                 <FiCalendar className={styles.icon} />
-  //                 <time>{/* {post.first_publication_date} */}15 mar 2021</time>
-  //                 <FiUser className={styles.icon} />
-  //                 <p>{post.data.author}</p>
-  //               </div>
-  //             </a>
-  //           </Link>
-  //         );
-  //       })}
-
-  //       {nextPage != null && (
-  //         <strong onClick={() => showMorePosts()}>Carregar mais posts</strong>
-  //       )}
-  //     </div>
-  //   </main>
-  // );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -167,23 +88,36 @@ export const getStaticProps: GetStaticProps = async () => {
     pageSize: 8,
   });
 
-  const posts = postsResponse.results.map<Post>((post) => {
-    return {
-      uid: post.uid,
+  // const posts = postsResponse.results.map<Post>((post) => {
+  //   return {
+  //     uid: post.uid,
+  //     first_publication_date: "12/06/2022",
+  //     data: {
+  //       title: post.data.title,
+  //       author: post.data.author,
+  //       resume: RichText.asText(post.data.content[0].body).slice(0, 200) + "...",
+  //       img: post.data.banner.url,
+  //     },
+  //   };
+  // });
+  var posts = [
+    {
+      uid: "url-de-teste",
       first_publication_date: "12/06/2022",
       data: {
-        title: post.data.title,
-        author: post.data.author,
-        resume: RichText.asText(post.data.content[0].body).slice(0, 200) + "...",
-        img: post.data.banner.url,
+        title: "Como criar um blog do zero",
+        author: "Christopher",
+        resume:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus odit cumque ipsa! Numquam accusamus repudiandae libero, esse dolorum soluta reprehenderit et saepe at incidunt perspiciatis autem possimus nobis. Amet, obcaecati.,",
+        img: "",
       },
-    };
-  });
+    },
+  ];
 
   return {
     props: {
       postsPagination: {
-        next_page: postsResponse.next_page,
+        next_page: null,
         results: posts,
       },
     },

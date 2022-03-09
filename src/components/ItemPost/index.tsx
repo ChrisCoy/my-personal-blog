@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { BsPerson } from "react-icons/bs";
 import { RiCalendarLine } from "react-icons/ri";
 import Link from "next/link";
+import background from "@public/background.jpg";
 
 interface Post {
   uid?: string;
@@ -25,7 +26,7 @@ export default function ItemPost({ post }: itemPostProps) {
         <div className={styles.postsItem}>
           <div className={styles.content}>
             <div className={styles.background}>
-              <img src={`${post.data.img}`} alt="" />
+              <img src={background.src} alt="" />
 
               <p className={styles.author}>
                 <BsPerson size={20} />

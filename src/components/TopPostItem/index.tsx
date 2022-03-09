@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { BsPerson } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import Link from "next/link";
+import background from "@public/background.jpg";
 
 interface Post {
   uid?: string;
@@ -25,7 +26,7 @@ export default function TopPostItem({ post }: itemPostProps) {
         <div
           className={styles.background}
           style={{
-            backgroundImage: `url("${post.data.img}")`,
+            backgroundImage: `url("${background.src}")`,
           }}
         >
           <div className={styles.content}>

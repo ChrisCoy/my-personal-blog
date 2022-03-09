@@ -17,6 +17,7 @@ body {
   color: var(--heading);
   min-width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1080px) {

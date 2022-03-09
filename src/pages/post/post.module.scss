@@ -1,0 +1,63 @@
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+}
+
+.background {
+  object-fit: cover;
+  object-position: center;
+  width: 100vw;
+  max-height: 25rem;
+  overflow-x: hidden;
+}
+
+.postInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem auto 4rem;
+  color: var(--effects);
+
+  h1 {
+    font-size: 2.5rem;
+    max-width: 500px;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  p,
+  time {
+    margin-right: 1.5rem;
+    color: var(--effects);
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+  }
+}
+
+.postContainer {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  .postContent {
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: "Inter";
+
+    span {
+      color: var(--highlight);
+    }
+  }
+}
