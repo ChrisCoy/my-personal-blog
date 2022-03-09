@@ -5,6 +5,7 @@ import { FiCalendar, FiClock, FiUser } from "react-icons/fi";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getPrismicClient } from "src/services/prismic";
 import { predicate as prismicPredicate } from "@prismicio/client";
+import { usePrismicDocumentByUID } from "@prismicio/react";
 
 interface Post {
   uid?: string;
@@ -22,6 +23,14 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps) {
+  const client = getPrismicClient();
+
+  async function teste() {
+    const doc = await client.getByUID("post", "dsadiusahdiuasdas");
+  }
+
+  teste();
+
   return (
     <>
       <Head>{<title>{"titulo provisorio"}</title>}</Head>
@@ -104,10 +113,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const client = getPrismicClient();
   const { slug } = params;
-  console.log(slug);
-  const response = await client.getByUID("post", "vdsadiusahdiuasdas", {});
 
-  console.log(response);
+  // const response = await client.getByUID("post", "vdsadiusahdiuasdas", {});
+  //console.log(doc);
+
+  // console.log(response);
 
   // var post = {
   //   first_publication_date: response.first_publication_date,
