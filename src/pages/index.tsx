@@ -40,6 +40,28 @@ export default function Home({ postsPagination }: HomeProps) {
   const [posts, setPosts] = useState<Post[]>(postsPagination.results);
   const [nextPage, setNextPage] = useState(postsPagination.next_page);
 
+  async function showMorePosts() {
+    fetch(nextPage)
+      .then((response) => response.json())
+      .then((data) => {
+        const postsTemp = data.results.map((post) => {
+          return {
+            uid: post.uid,
+            first_publication_date: data.first_publication_date,
+            data: {
+              title: post.data.title,
+              author: post.data.author,
+              resume: post.data.resume,
+              img: post.data.banner?.url,
+            },
+          };
+        });
+
+        setNextPage(data.next_page);
+        setPosts([...posts, ...postsTemp]);
+      });
+  }
+
   return (
     <main className={styles.container}>
       <div className={styles.content}>
@@ -51,7 +73,13 @@ export default function Home({ postsPagination }: HomeProps) {
             })}
           </div>
           {nextPage && (
-            <Button color="var(--highlight)" className={styles.buttonMorePost}>
+            <Button
+              color="var(--highlight)"
+              className={styles.buttonMorePost}
+              onClick={() => {
+                showMorePosts();
+              }}
+            >
               Carregar mais posts
             </Button>
           )}

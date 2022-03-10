@@ -1,10 +1,10 @@
-import background from "@public/background.jpg";
-import Head from "next/head";
 import styles from "./post.module.scss";
 import { FiCalendar, FiClock, FiUser } from "react-icons/fi";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { getPrismicClient } from "src/services/prismic";
 import { predicate as prismicPredicate } from "@prismicio/client";
+import { formatDate } from "src/util/format";
 
 interface Post {
   first_publication_date: string | null;
@@ -52,7 +52,7 @@ export default function Post({ post }: PostProps) {
               <span>
                 <FiCalendar className={styles.icon} />
               </span>
-              {post.first_publication_date}
+              {formatDate(Date.parse(post.first_publication_date))}
             </time>
           </div>
         </div>
@@ -64,10 +64,7 @@ export default function Post({ post }: PostProps) {
                   <h2>{content.heading}</h2>
                   {content.body.map((body) => {
                     return (
-                      <div
-                        key={Math.random()}
-                        dangerouslySetInnerHTML={{ __html: body.text }}
-                      />
+                      <div key={body.text} dangerouslySetInnerHTML={{ __html: body.text }} />
                     );
                   })}
                   <p />

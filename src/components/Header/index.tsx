@@ -4,9 +4,15 @@ import logo from "../../../public/logo.svg";
 import { SiWolframlanguage } from "react-icons/si";
 import { MdMenu, MdClose } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [router.asPath]);
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -31,7 +37,7 @@ export default function Header() {
                 ) : (
                   <MdClose
                     size={40}
-                    className={styles.menuHamburger}
+                    className={styles.closeButton}
                     onClick={() => {
                       setOpenMenu(!openMenu);
                     }}
@@ -41,16 +47,16 @@ export default function Header() {
             </div>
 
             <nav>
-              <Link href="/">
+              <Link href="/in-construction">
                 <a className={styles.active}>Posts</a>
               </Link>
-              <Link href="/">
+              <Link href="/in-construction">
                 <a className={styles.item}>Tecnologia</a>
               </Link>
-              <Link href="/">
+              <Link href="/in-construction">
                 <a className={styles.item}>Arte</a>
               </Link>
-              <Link href="/">
+              <Link href="/in-construction">
                 <a className={styles.item}>Sobre</a>
               </Link>
             </nav>

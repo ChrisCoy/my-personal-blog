@@ -3,4 +3,10 @@
   background-color: transparent;
   border: 1px solid;
   border-radius: 30px;
+  max-width: 320px;
+}
+
+.button:hover{
+  background-color: #e8485531;
+  color: var(--effects);
 }

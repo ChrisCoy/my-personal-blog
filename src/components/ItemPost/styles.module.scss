@@ -123,11 +123,11 @@
       }
 
       .background {
-        overflow : hidden;
+        overflow: hidden;
 
         background: none;
         img {
-          overflow : hidden;
+          overflow: hidden;
           margin-top: 0.5rem;
           width: 80px;
           height: 80px;
@@ -161,6 +161,36 @@
       100% {
         width: 240px;
         height: 180px;
+      }
+    }
+  }
+}
+
+@media (max-width: 839px) {
+  .container {
+    img {
+      transition: 0;
+    }
+    .postsItem {
+      transition: 0;
+      .content {
+        transition: 0;
+        .background {
+          img {
+            transition: 0;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .postsItem {
+        animation: none;
+        .content {
+          .resume {
+            animation: none;
+          }
+        }
       }
     }
   }
