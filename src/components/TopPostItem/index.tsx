@@ -15,18 +15,18 @@ interface Post {
   };
 }
 
-interface itemPostProps {
+interface ItemPostProps {
   post: Post;
 }
 
-export default function TopPostItem({ post }: itemPostProps) {
+export default function TopPostItem({ post }: ItemPostProps) {
   return (
     <Link href={`/post/${post.uid}`}>
       <a className={styles.container}>
         <div
           className={styles.background}
           style={{
-            backgroundImage: `url("${background.src}")`,
+            backgroundImage: `url("${post.data.img}")`,
           }}
         >
           <div className={styles.content}>

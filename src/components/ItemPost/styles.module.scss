@@ -123,8 +123,11 @@
       }
 
       .background {
+        overflow : hidden;
+
         background: none;
         img {
+          overflow : hidden;
           margin-top: 0.5rem;
           width: 80px;
           height: 80px;

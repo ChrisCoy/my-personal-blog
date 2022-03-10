@@ -9,11 +9,12 @@ import { predicate as prismicPredicate } from "@prismicio/client";
 
 //import commonStyles from '../styles/common.module.scss';
 // import styles from "./home.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RichText } from "prismic-dom";
 import ItemPost from "../components/ItemPost";
 import TopPostItem from "../components/TopPostItem";
 import LineTitle from "../components/LineTitle";
+import Button from "@components/Button";
 
 interface Post {
   uid?: string;
@@ -42,34 +43,28 @@ export default function Home({ postsPagination }: HomeProps) {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.title}>
-          <div>
-            <title>Posts</title>
-            <title>Top Posts</title>
-          </div>
-          <div className={styles.lineSeparator} />
-        </div>
         <div className={styles.posts}>
+          <LineTitle className={styles.rightLine}>Posts</LineTitle>
           <div className={styles.postsCards}>
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            {/* <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} />
-            <ItemPost post={posts[0]} /> */}
+            {posts.map((post) => {
+              return <ItemPost post={post} key={post.uid} />;
+            })}
           </div>
+          {nextPage && (
+            <Button color="var(--highlight)" className={styles.buttonMorePost}>
+              Carregar mais posts
+            </Button>
+          )}
         </div>
 
         <div className={styles.topPosts}>
+          <LineTitle left color="effects" className={styles.leftLine}>
+            Top Posts
+          </LineTitle>
           <div className={styles.topPostsCard}>
-            <TopPostItem post={posts[0]} />
-            <TopPostItem post={posts[0]} />
-            <TopPostItem post={posts[0]} />
-            <TopPostItem post={posts[0]} />
+            {posts.map((post) => {
+              return <TopPostItem post={post} key={post.uid} />;
+            })}
           </div>
         </div>
       </div>
@@ -85,39 +80,41 @@ export const getStaticProps: GetStaticProps = async () => {
       field: "document.first_publication_date",
       direction: "desc",
     },
-    pageSize: 8,
+    pageSize: 9,
   });
 
-  // const posts = postsResponse.results.map<Post>((post) => {
-  //   return {
-  //     uid: post.uid,
-  //     first_publication_date: "12/06/2022",
-  //     data: {
-  //       title: post.data.title,
-  //       author: post.data.author,
-  //       resume: RichText.asText(post.data.content[0].body).slice(0, 200) + "...",
-  //       img: post.data.banner.url,
-  //     },
-  //   };
-  // });
-  var posts = [
-    {
-      uid: "url-de-teste",
+  const posts = postsResponse.results.map<Post>((post) => {
+    return {
+      uid: post.uid,
       first_publication_date: "12/06/2022",
       data: {
-        title: "Como criar um blog do zero",
-        author: "Christopher",
-        resume:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus odit cumque ipsa! Numquam accusamus repudiandae libero, esse dolorum soluta reprehenderit et saepe at incidunt perspiciatis autem possimus nobis. Amet, obcaecati.,",
-        img: "",
+        title: post.data.title,
+        author: post.data.author,
+        resume: RichText.asText(post.data.content[0].body).slice(0, 200) + "...",
+        img: post.data.banner?.url || null,
       },
-    },
-  ];
+    };
+  });
+
+  // for tests without internet
+  // var posts = [
+  //   {
+  //     uid: "url-de-teste",
+  //     first_publication_date: "12/06/2022",
+  //     data: {
+  //       title: "Como criar um blog do zero",
+  //       author: "Christopher",
+  //       resume:
+  //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus odit cumque ipsa! Numquam accusamus repudiandae libero, esse dolorum soluta reprehenderit et saepe at incidunt perspiciatis autem possimus nobis. Amet, obcaecati.,",
+  //       img: "",
+  //     },
+  //   },
+  // ];
 
   return {
     props: {
       postsPagination: {
-        next_page: null,
+        next_page: postsResponse.next_page,
         results: posts,
       },
     },

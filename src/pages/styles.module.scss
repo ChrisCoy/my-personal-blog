@@ -10,41 +10,6 @@
 
     .title {
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-
-      & div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        title {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: var(--text);
-          border: 2px solid;
-          border-radius: 3px;
-          width: 8rem;
-          height: 2.2rem;
-          &:nth-child(1) {
-            color: var(--text);
-            border-color: var(--highlight);
-          }
-          &:nth-child(2) {
-            color: var(--text);
-            border-color: var(--effects);
-          }
-        }
-      }
-
-      .lineSeparator {
-        width: 100%;
-        margin: 0 2px;
-        height: 2px;
-        margin-top: -2px;
-        background: linear-gradient(60deg, var(--highlight) 70%, var(--effects) 75%);
-      }
     }
 
     div {
@@ -55,6 +20,26 @@
       flex: 5;
       display: flex;
       flex-direction: column;
+
+      .buttonMorePost{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .leftLine {
+      padding-left: 1rem;
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+    }
+
+    .rightLine{
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+
     }
 
     .topPosts {
@@ -64,17 +49,6 @@
 }
 
 .postsCards {
-  // max-width: 96%;
-  // align-self: center;
-  // gap: 2rem;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: space-around;
-  // &::after {
-  //   content: "";
-
-  // }
-
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
   gap: 2rem;

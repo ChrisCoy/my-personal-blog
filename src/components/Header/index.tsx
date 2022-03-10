@@ -2,15 +2,11 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 import logo from "../../../public/logo.svg";
 import { SiWolframlanguage } from "react-icons/si";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdClose } from "react-icons/md";
 import { useEffect, useState } from "react";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
-
-  useEffect(() => {
-    console.log(openMenu);
-  }, [openMenu]);
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -24,13 +20,23 @@ export default function Header() {
                 </div>
               </Link>
               <div>
-                <MdMenu
-                  size={40}
-                  className={styles.menuHamburger}
-                  onClick={() => {
-                    setOpenMenu(!openMenu);
-                  }}
-                />
+                {!openMenu ? (
+                  <MdMenu
+                    size={40}
+                    className={styles.menuHamburger}
+                    onClick={() => {
+                      setOpenMenu(!openMenu);
+                    }}
+                  />
+                ) : (
+                  <MdClose
+                    size={40}
+                    className={styles.menuHamburger}
+                    onClick={() => {
+                      setOpenMenu(!openMenu);
+                    }}
+                  />
+                )}
               </div>
             </div>
 

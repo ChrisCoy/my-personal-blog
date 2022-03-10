@@ -15,18 +15,18 @@ interface Post {
   };
 }
 
-interface itemPostProps {
+interface ItemPostProps {
   post: Post;
 }
 
-export default function ItemPost({ post }: itemPostProps) {
+export default function ItemPost({ post }: ItemPostProps) {
   return (
     <Link href={`/post/${post.uid}`}>
       <a className={styles.container}>
         <div className={styles.postsItem}>
           <div className={styles.content}>
             <div className={styles.background}>
-              <img src={background.src} alt="" />
+              <img src={post.data.img} alt="" />
 
               <p className={styles.author}>
                 <BsPerson size={20} />
