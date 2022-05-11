@@ -37,7 +37,6 @@ export default function Post({ post }: PostProps) {
     <>
       <Head>{<title>{post.data.title}</title>}</Head>
       <img src={post.data.banner.url} alt="background" className={styles.background} />
-      {console.log(post)}
       <div className={styles.container}>
         <div className={styles.postInfo}>
           <h1>{post.data.title}</h1>

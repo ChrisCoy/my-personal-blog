@@ -23,7 +23,6 @@
 
   h1 {
     font-size: 4rem;
-    max-width: 500px;
     text-align: center;
   }
 
@@ -65,7 +64,7 @@
 
     section {
       margin-bottom: 2.25rem;
-      
+
       strong {
         color: var(--highligth);
       }
@@ -75,8 +74,8 @@
         margin-bottom: 1.125rem;
         font-weight: 400;
       }
-      
-      div + div{
+
+      div + div {
         margin-top: 0.8rem;
       }
     }

@@ -42,6 +42,11 @@
       color: var(--text);
       transition: 0.2s ease-in-out;
       animation: reverseTextAnimation 1s;
+
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
     .info {
       display: none;
@@ -70,6 +75,7 @@
         max-width: 80%;
         animation: textAnimation 1 0.3s ease-in-out;
         animation-fill-mode: forwards;
+        -webkit-line-clamp: 2;
 
         left: 0;
       }

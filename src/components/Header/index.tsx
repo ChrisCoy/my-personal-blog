@@ -47,17 +47,45 @@ export default function Header() {
             </div>
 
             <nav>
-              <Link href="/in-construction">
-                <a className={styles.active}>Posts</a>
+              <Link href="/">
+                <a
+                  className={styles.active}
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Posts
+                </a>
               </Link>
               <Link href="/in-construction">
-                <a className={styles.item}>Tecnologia</a>
+                <a
+                  className={styles.item}
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Tecnologia
+                </a>
               </Link>
               <Link href="/in-construction">
-                <a className={styles.item}>Arte</a>
+                <a
+                  className={styles.item}
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Arte
+                </a>
               </Link>
               <Link href="/in-construction">
-                <a className={styles.item}>Sobre</a>
+                <a
+                  className={styles.item}
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Sobre
+                </a>
               </Link>
             </nav>
           </div>
